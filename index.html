@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Космический фон */
         .space-bg {
             position: fixed;
             top: 0;
@@ -52,7 +51,6 @@
             50% { opacity: 1; }
         }
 
-        /* Премиум навигация */
         .premium-nav {
             position: fixed;
             top: 0;
@@ -128,14 +126,12 @@
             transform: scale(1.05);
         }
 
-        /* Основной контейнер (сохранён из старой версии) */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 2rem 3rem;
         }
 
-        /* Hero секция (сохранена из старой версии) */
         .hero {
             text-align: center;
             padding: 3rem 1rem 2rem;
@@ -166,7 +162,6 @@
             margin-top: 1rem;
         }
 
-        /* Секции (сохранены из старой версии) */
         .section {
             background: rgba(3, 8, 20, 0.65);
             backdrop-filter: blur(2px);
@@ -238,7 +233,6 @@
             transform: scale(1.02);
         }
 
-        /* Форма */
         input, select, textarea {
             width: 100%;
             background: rgba(0, 10, 25, 0.8);
@@ -259,7 +253,6 @@
             display: none;
         }
 
-        /* Футер */
         footer {
             border-top: 1px solid rgba(0, 130, 220, 0.3);
             padding: 2.5rem 2rem 2rem;
@@ -278,7 +271,6 @@
         .footer-links a { color: #bbd9ff; text-decoration: none; }
         .footer-links a:hover { color: white; text-decoration: underline; }
 
-        /* Кнопка Prometheus AI (FAB) */
         .prometheus-fab {
             position: fixed;
             bottom: 2rem;
@@ -305,7 +297,6 @@
             transform: scale(1.05);
         }
 
-        /* Модальное окно Prometheus (сохранён полный 3D-контент) */
         .modal-full {
             position: fixed;
             top: 0;
@@ -383,7 +374,6 @@
     <div class="space-bg"></div>
     <div class="stars" id="stars"></div>
 
-    <!-- Премиум навигация -->
     <nav class="premium-nav">
         <div class="nav-container">
             <div class="logo-area">
@@ -400,7 +390,6 @@
         </div>
     </nav>
 
-    <!-- Основной контент (полностью сохранён из вашего исходного кода) -->
     <div class="container">
         <div class="hero">
             <div class="hero-image">
@@ -480,12 +469,10 @@
         <p style="margin-top: 0.8rem;">"A home among the stars, engineered by the future"</p>
     </footer>
 
-    <!-- Кнопка Prometheus AI -->
     <button class="prometheus-fab" id="openPrometheusBtn">
         ⚡ PROMETHEUS AI
     </button>
 
-    <!-- Модальное окно Prometheus с полным 3D-контентом -->
     <div id="prometheusModal" class="modal-full">
         <div class="modal-header-bar">
             <h2>⚡ PROMETHEUS AI · WELLAMATORES LAB</h2>
@@ -496,27 +483,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <title>Prometheus AI · Wellamatores Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prometheus AI · Orbital Reef 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: radial-gradient(ellipse at 30% 20%, #010814, #000000); }
+        body { overflow: hidden; font-family: "Inter", sans-serif; }
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .ui-overlay { position: relative; z-index: 20; pointer-events: none; width: 100%; min-height: 100vh; }
-        .glass-nav { pointer-events: auto; background: rgba(4,12,24,0.75); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,210,255,0.5); padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .prometheus-badge { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg,#FFFFFF,#5ee0ff,#00a6ff); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Orbitron", monospace; }
-        .fullscreen-btn { background: rgba(0,184,255,0.3); border: 1px solid #00e0ff; color: white; padding: 6px 18px; border-radius: 40px; cursor: pointer; font-family: "Inter", monospace; pointer-events: auto; }
+        .glass-nav { pointer-events: auto; background: rgba(4,12,24,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,210,255,0.5); padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .prometheus-badge { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg,#FFFFFF,#5ee0ff,#00a6ff); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Orbitron", monospace; }
+        .fullscreen-btn { background: rgba(0,184,255,0.3); border: 1px solid #00e0ff; color: white; padding: 6px 18px; border-radius: 40px; cursor: pointer; font-family: "Inter", monospace; pointer-events: auto; transition: all 0.3s; }
         .fullscreen-btn:hover { background: #00b8ff; color: #0a0c12; box-shadow: 0 0 12px #00b8ff; }
-        .launcher-panel { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; z-index: 30; pointer-events: auto; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); padding: 0.8rem 1.5rem; border-radius: 60px; border: 1px solid rgba(0,210,255,0.4); }
-        .launch-btn { background: rgba(4,20,35,0.9); border: 1px solid #2cc; color: #0ff; padding: 0.5rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: "Orbitron", monospace; }
-        .launch-btn:hover { background: #00b8ff; color: #000; box-shadow: 0 0 10px #0ff; border-color: #fff; }
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; }
+        .launcher-panel { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; z-index: 30; pointer-events: auto; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); padding: 0.8rem 1.5rem; border-radius: 60px; border: 1px solid rgba(0,210,255,0.4); }
+        .launch-btn { background: rgba(4,20,35,0.9); border: 1px solid #2cc; color: #0ff; padding: 0.5rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: "Orbitron", monospace; transition: all 0.3s; }
+        .launch-btn:hover { background: #00b8ff; color: #000; box-shadow: 0 0 10px #0ff; transform: scale(1.05); }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; }
         .modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
-        .modal-content { background: rgba(4,12,24,0.96); backdrop-filter: blur(20px); border-radius: 2rem; border: 2px solid rgba(0,210,255,0.6); width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto; padding: 1.8rem; animation: modalSlideIn 0.3s ease; }
+        .modal-content { background: rgba(4,12,24,0.95); backdrop-filter: blur(20px); border-radius: 2rem; border: 2px solid rgba(0,210,255,0.6); width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto; padding: 1.8rem; animation: modalSlideIn 0.3s ease; }
         @keyframes modalSlideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid rgba(0,210,255,0.4); }
-        .modal-header h2 { font-size: 1.5rem; background: linear-gradient(135deg,#fff,#0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .close-btn { background: rgba(255,50,50,0.2); border: 1px solid #f66; color: #f66; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
+        .modal-header h2 { font-size: 1.5rem; background: linear-gradient(135deg,#fff,#0ff); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Orbitron", monospace; }
+        .close-btn { background: rgba(255,50,50,0.2); border: 1px solid #f66; color: #f66; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; }
         .close-btn:hover { background: #f66; color: #fff; transform: scale(1.05); }
         .lang-block { margin-bottom: 1.5rem; padding: 0.8rem; border-radius: 1rem; background: rgba(0,30,50,0.3); }
         .lang-en { border-left: 3px solid #0ff; padding-left: 1rem; }
@@ -524,13 +512,12 @@
         .lang-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; color: #8aaccf; }
         .modal-body { color: #ccdeff; line-height: 1.6; }
         .modal-body h3 { color: #0ff; margin: 1rem 0 0.5rem; }
-        .modal-body ul { margin-left: 1.2rem; }
         .lending-stats { background: rgba(0,30,50,0.5); border-radius: 1rem; padding: 1rem; margin: 1rem 0; }
         .stat-line { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,255,255,0.2); }
         .input-group { display: flex; gap: 0.6rem; margin: 0.8rem 0; flex-wrap: wrap; }
         .input-group input { background: #0a1428; border: 1px solid #2c6a8a; border-radius: 2rem; padding: 0.6rem 1rem; color: white; flex: 2; }
-        .btn-action { background: #0f7b9e; border: none; border-radius: 2rem; padding: 0.6rem 1.2rem; font-weight: 600; color: white; cursor: pointer; }
-        .btn-action:hover { background: #1c9bc2; box-shadow: 0 0 8px #0ff; }
+        .btn-action { background: #0f7b9e; border: none; border-radius: 2rem; padding: 0.6rem 1.2rem; font-weight: 600; color: white; cursor: pointer; transition: all 0.3s; }
+        .btn-action:hover { background: #1c9bc2; box-shadow: 0 0 8px #0ff; transform: scale(1.02); }
         .progress-bar { background: #1e2f44; border-radius: 20px; height: 8px; width: 100%; margin: 0.8rem 0; }
         .progress-fill { background: linear-gradient(90deg,#00ccff,#2a6eff); height: 100%; border-radius: 20px; width: 0%; }
         footer { margin-top: 1.5rem; text-align: center; font-size: 0.7rem; color: #5a8caf; padding-top: 1rem; border-top: 1px solid rgba(0,255,255,0.2); }
@@ -541,7 +528,7 @@
 <div id="canvas-container"></div>
 <div class="ui-overlay">
     <div class="glass-nav">
-        <div class="prometheus-badge">⚡ PROMETHEUS · INDUSTRIAL AI</div>
+        <div class="prometheus-badge">⚡ PROMETHEUS · INDUSTRIAL AI · ORBITAL REEF</div>
         <button class="fullscreen-btn" id="fullscreenBtn">🗖 FULLSCREEN</button>
     </div>
 </div>
@@ -553,29 +540,35 @@
     <button class="launch-btn" data-modal="modalReef">🛰️ Orbital Reef</button>
     <button class="launch-btn" data-modal="modalTeam">🧪 Wellamatores</button>
 </div>
-<div id="modalOverview" class="modal"><div class="modal-content"><div class="modal-header"><h2>📊 Prometheus AI · Overview</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p><strong style="color:#0ff;">Prometheus</strong> — autonomous industrial AI module for <strong style="color:#ffaa66;">Orbital Reef (Blue Origin)</strong> space station.</p><h3>🚀 Key Metrics</h3><ul><li>🧠 120B parameters · edge-optimized</li><li>🛰️ Deployed on Orbital Reef since 2026</li><li>⚡ Real-time inference &lt;50ms</li><li>🔁 AI-agent for liquidity management</li></ul><h3>🎯 Mission</h3><p>Enable fully autonomous orbital manufacturing, resource orchestration, and decentralized lending for space infrastructure.</p></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><p><strong style="color:#0ff;">Prometheus</strong> — автономный промышленный ИИ-модуль для <strong style="color:#ffaa66;">Orbital Reef (Blue Origin)</strong>.</p><h3>🚀 Ключевые метрики</h3><ul><li>🧠 120B параметров · edge-оптимизация</li><li>🛰️ Развёрнут на Orbital Reef с 2026</li><li>⚡ Инференс в реальном времени &lt;50мс</li><li>🔁 AI-агент управления ликвидностью</li></ul><h3>🎯 Миссия</h3><p>Обеспечить полностью автономное орбитальное производство, управление ресурсами и децентрализованное кредитование космической инфраструктуры.</p></div></div></div></div>
-<div id="modalCapabilities" class="modal"><div class="modal-content"><div class="modal-header"><h2>⚙️ Core Capabilities</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><ul><li><strong style="color:#0ff;">🛸 Space Engineering</strong> — autonomous diagnostics, predictive maintenance, resource allocation.</li><li><strong style="color:#0ff;">📡 AI Lending Engine</strong> — dynamic underwriting based on uptime, compute power, telemetry.</li><li><strong style="color:#0ff;">⚡ Multi-Agent Orchestration</strong> — drone swarm for assembly, logistics, energy distribution.</li><li><strong style="color:#0ff;">🔐 Verifiable Inference</strong> — zero-trust industrial decisions with on-chain attestation.</li><li><strong style="color:#0ff;">🌍 Digital Twin</strong> — full Orbital Reef and Lunar Base simulation.</li></ul></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><ul><li><strong style="color:#0ff;">🛸 Космическая инженерия</strong> — автономная диагностика, предиктивное обслуживание, распределение ресурсов.</li><li><strong style="color:#0ff;">📡 AI-кредитование</strong> — динамический андеррайтинг на основе uptime, вычислительной мощности, телеметрии.</li><li><strong style="color:#0ff;">⚡ Оркестрация агентов</strong> — рой дронов для сборки, логистики, распределения энергии.</li><li><strong style="color:#0ff;">🔐 Верифицируемый вывод</strong> — zero-trust промышленные решения с on-chain аттестацией.</li><li><strong style="color:#0ff;">🌍 Цифровой двойник</strong> — полная симуляция Orbital Reef и лунной базы.</li></ul></div></div></div></div>
-<div id="modalLending" class="modal"><div class="modal-content"><div class="modal-header"><h2>💰 Prometheus Lending Model</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lending-stats"><div class="stat-line"><span>💰 Total Pool (USD₮)</span><span id="modalTotalPool">$0.00</span></div><div class="stat-line"><span>📈 Utilization / Загрузка</span><span id="modalUtilization">0%</span></div><div class="stat-line"><span>💎 Current APY / Текущая ставка</span><span id="modalAPY">0%</span></div><div class="stat-line"><span>🧠 Your accrued yield / Ваш доход</span><span id="modalYield">$0.00</span></div><div class="progress-bar"><div class="progress-fill" id="modalProgressFill" style="width:0%"></div></div></div><div class="input-group"><input type="number" id="modalDepositAmount" placeholder="Amount / Сумма (USD₮)" value="100"><button id="modalDepositBtn" class="btn-action">➕ Deposit / Внести</button></div><div class="input-group"><input type="number" id="modalWithdrawAmount" placeholder="Amount / Сумма (USD₮)" value="50"><button id="modalWithdrawBtn" class="btn-action">➖ Withdraw / Вывести</button></div><div id="modalLendingMessage" style="font-size:0.75rem; margin-top:0.5rem; color:#8cc9ff;">✨ AI-agent active / Агент активен</div><p style="font-size:0.7rem; margin-top:1rem;">⚡ Prometheus dynamically adjusts rates based on Orbital Reef infrastructure load.</p></div></div></div>
-<div id="modalArchitecture" class="modal"><div class="modal-content"><div class="modal-header"><h2>🏗️ Model Architecture</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><ul><li>➤ <strong>Transformer-based</strong> industrial reasoning (120B params)</li><li>➤ Space-graded quantization (INT8/FP16 mixed)</li><li>➤ Multi-modal: telemetry, LiDAR, visual, financial data</li><li>➤ On-chain lending oracle with dynamic risk modules</li><li>➤ Federated learning nodes across orbital infrastructure</li><li>➤ ZK-proofs for critical industrial decisions</li></ul><h3>🔧 Tech Stack</h3><p>PyTorch + Triton Inference Server · Rust for on-chain · IPFS · Libp2p</p></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><ul><li>➤ <strong>Transformer-based</strong> промышленный вывод (120B параметров)</li><li>➤ Космическое квантование (INT8/FP16 смешанное)</li><li>➤ Мультимодальность: телеметрия, LiDAR, визуальные данные, финансы</li><li>➤ On-chain оракул кредитования с динамическими модулями риска</li><li>➤ Федеративное обучение на орбитальных узлах</li><li>➤ ZK-доказательства для критических решений</li></ul><h3>🔧 Технологический стек</h3><p>PyTorch + Triton Inference Server · Rust для on-chain · IPFS · Libp2p</p></div></div></div></div>
-<div id="modalReef" class="modal"><div class="modal-content"><div class="modal-header"><h2>🛰️ Orbital Reef × Blue Origin</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p><strong style="color:#0ff;">Orbital Reef</strong> — commercial space station developed by <strong style="color:#ffaa66;">Blue Origin</strong> & Sierra Space.</p><h3>🚀 Prometheus Integration</h3><ul><li>➤ Edge-inference nodes on station modules</li><li>➤ Direct control of robotic manipulators</li><li>➤ Smart contract lending for compute power rental</li><li>➤ DAO governance for industrial parameters</li><li>➤ Blue Origin certification for critical systems</li></ul></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><p><strong style="color:#0ff;">Orbital Reef</strong> — коммерческая космическая станция, разрабатываемая <strong style="color:#ffaa66;">Blue Origin</strong> и Sierra Space.</p><h3>🚀 Интеграция Prometheus</h3><ul><li>➤ Edge-узлы инференса на модулях станции</li><li>➤ Прямое управление роботизированными манипуляторами</li><li>➤ Смарт-контракты для аренды вычислительных мощностей</li><li>➤ DAO-управление промышленными параметрами</li><li>➤ Сертификация Blue Origin для критических систем</li></ul></div></div></div></div>
-<div id="modalTeam" class="modal"><div class="modal-content"><div class="modal-header"><h2>🧪 Wellamatores Lab</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p>Specialized engineering lab at the intersection of <strong>space technology, AGI, and decentralized finance</strong>.</p><h3>🎯 Focus Areas</h3><ul><li>• Industrial AI agents for orbital stations</li><li>• DeFi protocols for space economy</li><li>• Digital twins of lunar and Martian bases</li><li>• Zero-trust verification for critical infrastructure</li></ul><h3>🤝 Partners</h3><p>Blue Origin · Sierra Space · ConsenSys · Filecoin Foundation</p></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><p>Специализированная инженерная лаборатория на стыке <strong>космических технологий, AGI и децентрализованных финансов</strong>.</p><h3>🎯 Направления</h3><ul><li>• Промышленные ИИ-агенты для орбитальных станций</li><li>• DeFi-протоколы для космической экономики</li><li>• Цифровые двойники лунных и марсианских баз</li><li>• Zero-trust верификация для критической инфраструктуры</li></ul><h3>🤝 Партнёры</h3><p>Blue Origin · Sierra Space · ConsenSys · Filecoin Foundation</p></div><footer>© 2026 — Wellamatores Lab · Space Engineering Division</footer></div></div></div>
+<div id="modalOverview" class="modal"><div class="modal-content"><div class="modal-header"><h2>📊 Prometheus AI · Overview</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p><strong style="color:#0ff;">Prometheus</strong> — autonomous industrial AI module for <strong style="color:#ffaa66;">Orbital Reef (Blue Origin)</strong> space station.</p><h3>🚀 Key Metrics</h3><ul><li>🧠 120B parameters · edge-optimized</li><li>🛰️ Deployed on Orbital Reef since 2026</li><li>⚡ Real-time inference &lt;50ms</li><li>🔁 AI-agent for liquidity management</li></ul></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><p><strong style="color:#0ff;">Prometheus</strong> — автономный промышленный ИИ-модуль для <strong style="color:#ffaa66;">Orbital Reef (Blue Origin)</strong>.</p><h3>🚀 Ключевые метрики</h3><ul><li>🧠 120B параметров · edge-оптимизация</li><li>🛰️ Развёрнут на Orbital Reef с 2026</li><li>⚡ Инференс в реальном времени &lt;50мс</li></ul></div></div></div></div>
+<div id="modalCapabilities" class="modal"><div class="modal-content"><div class="modal-header"><h2>⚙️ Core Capabilities</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><ul><li>🛸 Space Engineering — autonomous diagnostics</li><li>📡 AI Lending Engine — dynamic underwriting</li><li>⚡ Multi-Agent Orchestration — drone swarm</li><li>🔐 Verifiable Inference — zero-trust decisions</li><li>🌍 Digital Twin — full Orbital Reef simulation</li></ul></div><div class="lang-block lang-ru"><div class="lang-label">🇷🇺 РУССКИЙ</div><ul><li>🛸 Космическая инженерия — автономная диагностика</li><li>📡 AI-кредитование — динамический андеррайтинг</li><li>⚡ Оркестрация агентов — рой дронов</li><li>🔐 Верифицируемый вывод — zero-trust решения</li><li>🌍 Цифровой двойник — симуляция Orbital Reef</li></ul></div></div></div></div>
+<div id="modalLending" class="modal"><div class="modal-content"><div class="modal-header"><h2>💰 Lending Engine</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lending-stats"><div class="stat-line"><span>💰 Total Pool</span><span id="modalTotalPool">$4,282,750.00</span></div><div class="stat-line"><span>📈 Utilization</span><span id="modalUtilization">66.3%</span></div><div class="stat-line"><span>💎 Current APY</span><span id="modalAPY">10.68%</span></div><div class="progress-bar"><div class="progress-fill" id="modalProgressFill" style="width:66%"></div></div></div><div class="input-group"><input type="number" id="modalDepositAmount" placeholder="Amount (USD₮)" value="100"><button id="modalDepositBtn" class="btn-action">➕ Deposit</button></div><div class="input-group"><input type="number" id="modalWithdrawAmount" placeholder="Amount (USD₮)" value="50"><button id="modalWithdrawBtn" class="btn-action">➖ Withdraw</button></div><div id="modalLendingMessage" style="font-size:0.75rem; margin-top:0.5rem; color:#8cc9ff;">✨ AI-agent active</div></div></div></div>
+<div id="modalArchitecture" class="modal"><div class="modal-content"><div class="modal-header"><h2>🏗️ Architecture</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><ul><li>Transformer-based industrial reasoning (120B params)</li><li>Space-graded quantization (INT8/FP16)</li><li>Multi-modal: telemetry, LiDAR, financial data</li><li>Federated learning across orbital infrastructure</li></ul><h3>Tech Stack</h3><p>PyTorch · Triton · Rust · IPFS · Libp2p</p></div></div></div></div>
+<div id="modalReef" class="modal"><div class="modal-content"><div class="modal-header"><h2>🛰️ Orbital Reef</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p>Commercial space station by <strong>Blue Origin</strong> & Sierra Space.</p><h3>Prometheus Integration</h3><ul><li>Edge-inference nodes on station modules</li><li>Direct control of robotic manipulators</li><li>Smart contract lending for compute power</li><li>DAO governance for industrial parameters</li></ul></div></div></div></div>
+<div id="modalTeam" class="modal"><div class="modal-content"><div class="modal-header"><h2>🧪 Wellamatores Lab</h2><button class="close-btn">✕</button></div><div class="modal-body"><div class="lang-block lang-en"><div class="lang-label">🇬🇧 ENGLISH</div><p>Space technology, AGI, and decentralized finance.</p><h3>Partners</h3><p>Blue Origin · Sierra Space · ConsenSys</p></div></div></div></div>
+
 <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.128.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/" } }
 </script>
 <script type="module">
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-    import { CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
+    import { CSS2DRenderer, CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
+
     const container = document.getElementById("canvas-container");
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x030614);
-    scene.fog = new THREE.FogExp2(0x030614, 0.00035);
-    const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(5.8, 2.5, 8.5);
+    scene.background = new THREE.Color(0x010418);
+    scene.fog = new THREE.FogExp2(0x010418, 0.0002);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(8, 3, 12);
+    
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
+    renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
+    
     const labelRenderer = new CSS2DRenderer();
     labelRenderer.setSize(window.innerWidth, window.innerHeight);
     labelRenderer.domElement.style.position = "absolute";
@@ -583,65 +576,222 @@
     labelRenderer.domElement.style.left = "0px";
     labelRenderer.domElement.style.pointerEvents = "none";
     container.appendChild(labelRenderer.domElement);
+    
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.85;
+    controls.autoRotateSpeed = 0.5;
     controls.enableZoom = true;
-    controls.target.set(0, 0.4, 0);
-    const ambientLight = new THREE.AmbientLight(0x111122);
+    controls.enablePan = true;
+    controls.target.set(0, 0, 0);
+    
+    const ambientLight = new THREE.AmbientLight(0x222244);
     scene.add(ambientLight);
-    const mainLight = new THREE.DirectionalLight(0xffffff, 1.25);
-    mainLight.position.set(3, 5, 2);
+    
+    const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    mainLight.position.set(5, 10, 7);
     mainLight.castShadow = true;
     scene.add(mainLight);
-    const fillLight = new THREE.PointLight(0x4488ff, 0.5);
-    fillLight.position.set(-2, 1, 3);
+    
+    const backLight = new THREE.PointLight(0x4488ff, 0.5);
+    backLight.position.set(-3, 1, -5);
+    scene.add(backLight);
+    
+    const fillLight = new THREE.PointLight(0xffaa66, 0.3);
+    fillLight.position.set(2, 3, 4);
     scene.add(fillLight);
-    const textureLoader = new THREE.TextureLoader();
-    const earthMap = textureLoader.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
-    const earthGeometry = new THREE.SphereGeometry(1.9, 128, 128);
-    const earthMaterial = new THREE.MeshPhongMaterial({ map: earthMap, shininess: 5 });
-    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-    earth.position.set(4.8, -0.7, -4.5);
+    
+    // Звёзды
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 4000;
+    const starPositions = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+        starPositions[i*3] = (Math.random() - 0.5) * 800;
+        starPositions[i*3+1] = (Math.random() - 0.5) * 500;
+        starPositions[i*3+2] = (Math.random() - 0.5) * 200 - 80;
+    }
+    starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, transparent: true, opacity: 0.7 });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+    
+    // Солнце
+    const sunGeometry = new THREE.SphereGeometry(1.2, 64, 64);
+    const sunMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffaa66,
+        emissive: 0xff4411,
+        emissiveIntensity: 1.2,
+        metalness: 0.9,
+        roughness: 0.3
+    });
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.position.set(-12, 5, -8);
+    scene.add(sun);
+    
+    // Земля с высоким разрешением
+    const earthGeometryDetailed = new THREE.SphereGeometry(2.2, 256, 256);
+    const earthTexture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+    const earthCloudTexture = new THREE.TextureLoader().load("https://threejs.org/examples/textures/planets/earth_clouds_1024.png");
+    
+    const earthMaterialDetailed = new THREE.MeshPhongMaterial({
+        map: earthTexture,
+        shininess: 5,
+        specular: new THREE.Color(0x111111)
+    });
+    const earth = new THREE.Mesh(earthGeometryDetailed, earthMaterialDetailed);
+    earth.position.set(5, -1, -4);
     scene.add(earth);
-    const moonGeometry = new THREE.SphereGeometry(0.52, 128, 128);
-    const moonMaterial = new THREE.MeshStandardMaterial({ color: 0xccccdd, roughness: 0.85 });
-    const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-    scene.add(moon);
-    const ringGroup = new THREE.Group();
-    const torusMain = new THREE.Mesh(new THREE.TorusGeometry(1.68, 0.085, 72, 240), new THREE.MeshStandardMaterial({ color: 0x44aaff, metalness: 0.85, emissive: 0x004466, emissiveIntensity: 0.5 }));
-    ringGroup.add(torusMain);
-    scene.add(ringGroup);
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsCount = 2000;
-    const starsPos = new Float32Array(starsCount * 3);
-    for (let i = 0; i < starsCount; i++) { starsPos[i*3] = (Math.random() - 0.5) * 2000; starsPos[i*3+1] = (Math.random() - 0.5) * 1000; starsPos[i*3+2] = (Math.random() - 0.5) * 200 - 80; }
-    starsGeometry.setAttribute("position", new THREE.BufferAttribute(starsPos, 3));
-    scene.add(new THREE.Points(starsGeometry, new THREE.PointsMaterial({ color: 0xffffff, size: 0.2 })));
-    let moonAngle = 0;
+    
+    // Облака
+    const cloudGeometry = new THREE.SphereGeometry(2.22, 256, 256);
+    const cloudMaterial = new THREE.MeshPhongMaterial({
+        map: earthCloudTexture,
+        transparent: true,
+        opacity: 0.15,
+        blending: THREE.AdditiveBlending
+    });
+    const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+    scene.add(clouds);
+    
+    // Луна с procedural текстурой (кратеры!)
+    const moonCanvas = document.createElement("canvas");
+    moonCanvas.width = 1024;
+    moonCanvas.height = 1024;
+    const moonCtx = moonCanvas.getContext("2d");
+    moonCtx.fillStyle = "#c0c0c0";
+    moonCtx.fillRect(0, 0, 1024, 1024);
+    for (let i = 0; i < 300; i++) {
+        const x = Math.random() * 1024;
+        const y = Math.random() * 1024;
+        const radius = Math.random() * 15 + 5;
+        moonCtx.beginPath();
+        moonCtx.arc(x, y, radius, 0, Math.PI * 2);
+        moonCtx.fillStyle = `rgba(100, 100, 110, ${Math.random() * 0.5 + 0.3})`;
+        moonCtx.fill();
+        moonCtx.beginPath();
+        moonCtx.arc(x - radius * 0.3, y - radius * 0.3, radius * 0.3, 0, Math.PI * 2);
+        moonCtx.fillStyle = `rgba(80, 80, 90, 0.8)`;
+        moonCtx.fill();
+    }
+    for (let i = 0; i < 50; i++) {
+        const x = Math.random() * 1024;
+        const y = Math.random() * 1024;
+        const radius = Math.random() * 40 + 20;
+        moonCtx.beginPath();
+        moonCtx.ellipse(x, y, radius, radius * 0.8, 0, 0, Math.PI * 2);
+        moonCtx.fillStyle = `rgba(90, 90, 100, 0.6)`;
+        moonCtx.fill();
+    }
+    const moonTexture = new THREE.CanvasTexture(moonCanvas);
+    
+    const moonGeometryDetailed = new THREE.SphereGeometry(0.85, 256, 256);
+    const moonMaterialDetailed = new THREE.MeshStandardMaterial({
+        map: moonTexture,
+        roughness: 0.85,
+        metalness: 0.05,
+        color: 0xccccdd
+    });
+    const moonDetailed = new THREE.Mesh(moonGeometryDetailed, moonMaterialDetailed);
+    scene.add(moonDetailed);
+    
+    // Орбитальная станция
+    const stationGroup = new THREE.Group();
+    const mainRing = new THREE.Mesh(
+        new THREE.TorusGeometry(1.6, 0.08, 128, 256),
+        new THREE.MeshStandardMaterial({ color: 0x44aaff, metalness: 0.85, emissive: 0x004466, emissiveIntensity: 0.4 })
+    );
+    stationGroup.add(mainRing);
+    
+    const innerRing = new THREE.Mesh(
+        new THREE.TorusGeometry(1.2, 0.05, 96, 256),
+        new THREE.MeshStandardMaterial({ color: 0x88ccff, metalness: 0.9, emissive: 0x2266aa, emissiveIntensity: 0.2 })
+    );
+    stationGroup.add(innerRing);
+    
+    for (let i = 0; i < 8; i++) {
+        const angle = (i / 8) * Math.PI * 2;
+        const spoke = new THREE.Mesh(
+            new THREE.BoxGeometry(0.05, 0.05, 1.8),
+            new THREE.MeshStandardMaterial({ color: 0x66ccff, metalness: 0.8 })
+        );
+        spoke.position.set(Math.cos(angle) * 1.4, Math.sin(angle) * 1.4, 0);
+        spoke.rotation.z = angle;
+        stationGroup.add(spoke);
+    }
+    
+    const coreSphere = new THREE.Mesh(
+        new THREE.SphereGeometry(0.45, 64, 64),
+        new THREE.MeshStandardMaterial({ color: 0xffaa66, metalness: 0.7, emissive: 0x442200, emissiveIntensity: 0.3 })
+    );
+    stationGroup.add(coreSphere);
+    
+    stationGroup.position.set(-1.5, 1.2, 2);
+    scene.add(stationGroup);
+    
+    // Метки
+    function makeLabel(text, color, position) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        div.style.color = color;
+        div.style.fontSize = "14px";
+        div.style.fontFamily = "Orbitron, monospace";
+        div.style.background = "rgba(0,0,0,0.6)";
+        div.style.padding = "4px 12px";
+        div.style.borderRadius = "20px";
+        div.style.border = `1px solid ${color}`;
+        div.style.backdropFilter = "blur(4px)";
+        const label = new CSS2DObject(div);
+        label.position.copy(position);
+        scene.add(label);
+    }
+    
+    makeLabel("🌍 EARTH", "#4a9eff", new THREE.Vector3(5, -1.2, -4));
+    makeLabel("🌙 MOON", "#c0c0c0", new THREE.Vector3(0, 2.2, 5.5));
+    makeLabel("☀️ SUN", "#ffaa44", new THREE.Vector3(-12, 5.5, -8));
+    makeLabel("🛰️ ORBITAL REEF", "#0ff", new THREE.Vector3(-1.5, 1.8, 2.5));
+    
+    let time = 0;
+    let moonOrbitAngle = 0;
+    
     function animate() {
         requestAnimationFrame(animate);
-        moonAngle += 0.003;
-        moon.position.x = 4.8 + Math.cos(moonAngle) * 3.7;
-        moon.position.z = -4.5 + Math.sin(moonAngle) * 3.7;
-        moon.position.y = -0.7 + Math.sin(moonAngle * 1.4) * 0.5;
-        ringGroup.rotation.y += 0.008;
+        time += 0.005;
+        moonOrbitAngle += 0.003;
+        
+        earth.rotation.y += 0.002;
+        clouds.rotation.y += 0.0025;
+        
+        moonDetailed.position.x = 4.5 + Math.cos(moonOrbitAngle) * 4.2;
+        moonDetailed.position.z = -3.5 + Math.sin(moonOrbitAngle) * 4.2;
+        moonDetailed.position.y = -0.8 + Math.sin(moonOrbitAngle * 1.3) * 1.2;
+        moonDetailed.rotation.y += 0.005;
+        
+        stationGroup.rotation.y += 0.008;
+        stationGroup.rotation.x = Math.sin(time) * 0.1;
+        stationGroup.rotation.z = Math.cos(time * 0.7) * 0.05;
+        
+        const scale = 1 + Math.sin(time * 3) * 0.02;
+        sun.scale.set(scale, scale, scale);
+        
         controls.update();
         renderer.render(scene, camera);
         labelRenderer.render(scene, camera);
     }
+    
     animate();
+    
     window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
         labelRenderer.setSize(window.innerWidth, window.innerHeight);
     });
+    
     document.getElementById("fullscreenBtn").addEventListener("click", () => {
         if (!document.fullscreenElement) document.documentElement.requestFullscreen();
         else document.exitFullscreen();
     });
+    
     const modals = document.querySelectorAll(".modal");
     const launchBtns = document.querySelectorAll(".launch-btn");
     function closeAllModals() { modals.forEach(m => m.classList.remove("active")); }
@@ -655,76 +805,54 @@
     });
     modals.forEach(modal => {
         const closeBtn = modal.querySelector(".close-btn");
-        closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+        if (closeBtn) closeBtn.addEventListener("click", () => modal.classList.remove("active"));
         modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.remove("active"); });
     });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAllModals(); });
-    let userPrincipal = 1250.00;
-    let userAccruedYield = 18.42;
-    let totalPoolLiquidity = 4282750.00;
-    let lastTimestamp = Date.now();
-    function computeUtilizationPercent() {
-        let baseBorrowed = 2840000;
-        let adjustment = (userPrincipal / 800000) * 18000;
-        let borrowed = Math.min(baseBorrowed + adjustment, totalPoolLiquidity * 0.92);
-        return Math.min(94, Math.max(8, (borrowed / totalPoolLiquidity) * 100));
-    }
-    function computeAPY(utilPercent) {
-        let ratio = Math.min(1.0, utilPercent / 100.0);
-        return parseFloat((3.2 + (11.3 * ratio)).toFixed(2));
-    }
-    function accrueYieldOverTime() {
-        const now = Date.now();
-        const secondsPassed = (now - lastTimestamp) / 1000;
-        if (secondsPassed > 0 && userPrincipal > 0) {
-            const util = computeUtilizationPercent();
-            const currentAPY = computeAPY(util);
-            const annualYield = userPrincipal * (currentAPY / 100);
-            userAccruedYield += annualYield / 31536000 * secondsPassed;
-            if (userAccruedYield < 0) userAccruedYield = 0;
-        }
-        lastTimestamp = now;
-    }
+    
+    let userBalance = 1250;
+    let totalPool = 4282750;
+    let userYield = 18.42;
+    
     function updateLendingUI() {
-        accrueYieldOverTime();
-        let util = computeUtilizationPercent();
-        let apy = computeAPY(util);
-        document.getElementById("modalTotalPool").innerText = `$${totalPoolLiquidity.toLocaleString(undefined, {minimumFractionDigits:2})}`;
-        document.getElementById("modalUtilization").innerText = `${util.toFixed(1)}%`;
+        document.getElementById("modalTotalPool").innerText = `$${totalPool.toLocaleString(undefined, {minimumFractionDigits:2})}`;
+        const util = ((totalPool - 1442750) / totalPool * 100).toFixed(1);
+        document.getElementById("modalUtilization").innerText = `${util}%`;
+        const apy = (5 + (util / 10)).toFixed(2);
         document.getElementById("modalAPY").innerText = `${apy}%`;
-        document.getElementById("modalYield").innerText = `$${userAccruedYield.toFixed(2)}`;
-        document.getElementById("modalProgressFill").style.width = `${Math.min(100, util)}%`;
+        document.getElementById("modalProgressFill").style.width = `${Math.min(100, parseFloat(util))}%`;
     }
-    function refreshAfterTx(msg) {
-        updateLendingUI();
-        const msgDiv = document.getElementById("modalLendingMessage");
-        msgDiv.innerText = msg + " ✅ AI rebalanced. / Баланс скорректирован.";
-        setTimeout(() => { if(document.getElementById("modalLendingMessage")) msgDiv.innerText = "✨ Prometheus AI active — lending simulation / Кредитная симуляция активна"; }, 2800);
-    }
-    document.getElementById("modalDepositBtn").addEventListener("click", () => {
+    
+    document.getElementById("modalDepositBtn")?.addEventListener("click", () => {
         let amount = parseFloat(document.getElementById("modalDepositAmount").value);
-        if (isNaN(amount) || amount <= 0) { document.getElementById("modalLendingMessage").innerText = "⚠️ Invalid amount / Неверная сумма"; return; }
-        accrueYieldOverTime();
-        userPrincipal += amount;
-        totalPoolLiquidity += amount;
-        refreshAfterTx(`Deposited / Внесено $${amount.toFixed(2)}`);
-        document.getElementById("modalDepositAmount").value = "";
+        if (!isNaN(amount) && amount > 0) {
+            userBalance += amount;
+            totalPool += amount;
+            updateLendingUI();
+            document.getElementById("modalLendingMessage").innerText = `✅ Deposited $${amount.toFixed(2)}`;
+            setTimeout(() => document.getElementById("modalLendingMessage").innerText = "✨ AI-agent active", 2000);
+        }
     });
-    document.getElementById("modalWithdrawBtn").addEventListener("click", () => {
+    
+    document.getElementById("modalWithdrawBtn")?.addEventListener("click", () => {
         let amount = parseFloat(document.getElementById("modalWithdrawAmount").value);
-        if (isNaN(amount) || amount <= 0) { document.getElementById("modalLendingMessage").innerText = "⚠️ Invalid amount / Неверная сумма"; return; }
-        accrueYieldOverTime();
-        let totalAvailable = userPrincipal + userAccruedYield;
-        if (amount > totalAvailable) { document.getElementById("modalLendingMessage").innerText = `❌ Insufficient funds / Недостаточно средств (${totalAvailable.toFixed(2)})`; return; }
-        let remaining = amount;
-        if (userAccruedYield >= remaining) { userAccruedYield -= remaining; remaining = 0; }
-        else { remaining -= userAccruedYield; userAccruedYield = 0; if (remaining > userPrincipal) return; userPrincipal -= remaining; }
-        totalPoolLiquidity -= amount;
-        if (totalPoolLiquidity < 0) totalPoolLiquidity = 0;
-        if (userPrincipal < 0) userPrincipal = 0;
-        refreshAfterTx(`Withdrew / Выведено $${amount.toFixed(2)}`);
+        if (!isNaN(amount) && amount > 0 && amount <= userBalance + userYield) {
+            if (amount <= userYield) {
+                userYield -= amount;
+            } else {
+                amount -= userYield;
+                userYield = 0;
+                userBalance -= amount;
+            }
+            totalPool -= amount;
+            updateLendingUI();
+            document.getElementById("modalLendingMessage").innerText = `✅ Withdrew $${amount.toFixed(2)}`;
+            setTimeout(() => document.getElementById("modalLendingMessage").innerText = "✨ AI-agent active", 2000);
+        } else {
+            document.getElementById("modalLendingMessage").innerText = "❌ Insufficient funds";
+        }
     });
-    setInterval(() => { updateLendingUI(); }, 5000);
+    
     updateLendingUI();
 </script>
 </body>
@@ -733,7 +861,6 @@
     </div>
 
     <script>
-        // Создание звёзд
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 300; i++) {
@@ -750,7 +877,6 @@
         }
         createStars();
 
-        // Модальное окно Prometheus
         const openBtn = document.getElementById('openPrometheusBtn');
         const modal = document.getElementById('prometheusModal');
         const closeBtn = document.getElementById('closePrometheusBtn');
@@ -760,7 +886,6 @@
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) modal.classList.remove('active'); });
 
-        // Форма бронирования
         const form = document.getElementById('bookingForm');
         const successDiv = document.getElementById('formSuccess');
         form.addEventListener('submit', function(e) {
@@ -774,7 +899,6 @@
             } else alert("Please enter your name and email.");
         });
 
-        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
