@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Orbital Reef | Blue Origin · Prometheus AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,23 +13,134 @@
         }
 
         body {
-            background-color: #050510;
-            background-image: radial-gradient(circle at 25% 40%, rgba(0, 100, 200, 0.08) 0%, #03030a 100%);
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            color: #eef5ff;
-            line-height: 1.5;
+            background: #0a0a0f;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
         }
 
+        /* Космический фон */
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at 30% 40%, #0a0a2a 0%, #020208 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Премиум навигация */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 158, 255, 0.3);
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-area img {
+            height: 35px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, #4a9eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #4a9eff;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #4a9eff, #2a5eff);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+        }
+
+        /* Основной контейнер (сохранён из старой версии) */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 2rem 3rem;
         }
 
+        /* Hero секция (сохранена из старой версии) */
         .hero {
             text-align: center;
             padding: 3rem 1rem 2rem;
             border-bottom: 1px solid rgba(0, 160, 255, 0.25);
+            margin-top: 80px;
         }
 
         .hero-image {
@@ -54,6 +166,7 @@
             margin-top: 1rem;
         }
 
+        /* Секции (сохранены из старой версии) */
         .section {
             background: rgba(3, 8, 20, 0.65);
             backdrop-filter: blur(2px);
@@ -125,30 +238,7 @@
             transform: scale(1.02);
         }
 
-        .prometheus-nav-btn {
-            background: linear-gradient(135deg, #0a4c8c, #2a0a6c);
-            border: 1px solid #7c4dff;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            font-family: 'Orbitron', monospace;
-            transition: all 0.2s;
-        }
-
-        .prometheus-nav-btn:hover {
-            background: linear-gradient(135deg, #136bb3, #4a1a9c);
-            box-shadow: 0 0 15px #7c4dff;
-            transform: scale(1.02);
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1rem;
-        }
-
+        /* Форма */
         input, select, textarea {
             width: 100%;
             background: rgba(0, 10, 25, 0.8);
@@ -169,6 +259,7 @@
             display: none;
         }
 
+        /* Футер */
         footer {
             border-top: 1px solid rgba(0, 130, 220, 0.3);
             padding: 2.5rem 2rem 2rem;
@@ -187,7 +278,34 @@
         .footer-links a { color: #bbd9ff; text-decoration: none; }
         .footer-links a:hover { color: white; text-decoration: underline; }
 
-        /* Modal fullscreen for Prometheus */
+        /* Кнопка Prometheus AI (FAB) */
+        .prometheus-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #0a4c8c, #2a0a6c);
+            border: 1px solid #7c4dff;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(124, 77, 255, 0.3);
+        }
+
+        .prometheus-fab:hover {
+            background: linear-gradient(135deg, #136bb3, #4a1a9c);
+            box-shadow: 0 0 30px #7c4dff;
+            transform: scale(1.05);
+        }
+
+        /* Модальное окно Prometheus (сохранён полный 3D-контент) */
         .modal-full {
             position: fixed;
             top: 0;
@@ -195,7 +313,7 @@
             width: 100%;
             height: 100%;
             background: #03050b;
-            z-index: 1000;
+            z-index: 2000;
             display: flex;
             flex-direction: column;
             opacity: 0;
@@ -217,7 +335,6 @@
             padding: 1rem 2rem;
             background: rgba(4, 12, 24, 0.98);
             border-bottom: 2px solid rgba(0, 210, 255, 0.6);
-            z-index: 10;
         }
 
         .modal-header-bar h2 {
@@ -244,7 +361,6 @@
         .close-modal-btn:hover {
             background: #f66;
             color: #fff;
-            transform: scale(1.05);
         }
 
         .modal-iframe {
@@ -258,101 +374,124 @@
             .container { padding: 1rem; }
             .section { padding: 1.5rem; }
             .hero-image { max-width: 220px; }
+            .nav-links { display: none; }
+            .prometheus-fab { padding: 0.7rem 1.2rem; font-size: 0.8rem; bottom: 1rem; right: 1rem; }
         }
     </style>
 </head>
 <body>
+    <div class="space-bg"></div>
+    <div class="stars" id="stars"></div>
 
-<div class="container">
-    <div class="nav-bar">
-        <button class="prometheus-nav-btn" id="openPrometheusBtn">⚡ PROMETHEUS AI · WELLAMATORES LAB</button>
-    </div>
-
-    <div class="hero">
-        <div class="hero-image">
-            <img src="photo_5863953355456056813_y.jpg" alt="Blue Origin - Orbital Reef">
-        </div>
-        <div class="tagline-hero">✦ FIRST COMMERCIAL SPACE STATION ✦</div>
-        <p style="margin-top: 1.2rem; font-size: 1.1rem; color:#b8d0ff;">
-        Designed by Blue Origin & Sierra Space. A home for life, work, and research in Low Earth Orbit.
-        </p>
-    </div>
-
-    <div class="section">
-        <h2>MISSION</h2>
-        <p>Orbital Reef is a private orbital station enabling a new era of space living. Modular architecture, artificial gravity in residential zones, docking for Dream Chaser and New Glenn. Built for reliability, comfort, and long-term occupancy.</p>
-    </div>
-
-    <div class="section">
-        <h2>KEY MODULES</h2>
-        <div class="grid-2col">
-            <div class="card"><h3>🛋️ Residential Core</h3><p>Panoramic Earth-view apartments, individual climate control, soundproofing, and zero-G lounges.</p></div>
-            <div class="card"><h3>🌱 Bio-Dome</h3><p>Hydroponic farms, closed-loop oxygen, fresh herbs & vegetables. A natural oasis in orbit.</p></div>
-            <div class="card"><h3>🔬 Science Hub</h3><p>Microgravity labs, research racks, and partnerships with NASA & top universities.</p></div>
-            <div class="card"><h3>🎬 Panoramic Cupola</h3><p>Observatory and event venue. Host dinners with Earthrise as your backdrop.</p></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>WHY ORBITAL REEF</h2>
-        <div class="grid-3col">
-            <div class="card"><h3>🔹 Safety First</h3><p>Active shielding, radiation protection, and regular crew rotation flights.</p></div>
-            <div class="card"><h3>🔹 New Economy</h3><p>Lease modules for startups, in-space manufacturing, and orbital tourism.</p></div>
-            <div class="card"><h3>🔹 Seamless Transport</h3><p>Docking for Crew Dragon, Starliner, Dream Chaser. Regular Blue Origin servicing.</p></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>INVESTMENT PACKAGES</h2>
-        <div class="grid-3col">
-            <div class="card"><h3>RESIDENT</h3><div class="price">$9.5M</div><p>45m² apartment • 45 days/year access • science lectures</p><hr><span style="color:#9acdff;">▸ personal experiment locker</span></div>
-            <div class="card"><h3>PREMIUM</h3><div class="price">$22M</div><p>110m² Earth-view suite • 3 months stay + guest slots</p><hr><span style="color:#9acdff;">▸ priority docking</span></div>
-            <div class="card"><h3>CORPORATE/VIP</h3><div class="price">$48M+</div><p>250m² exclusive module • full service • unlimited duration</p><hr><span style="color:#9acdff;">▸ mission control access</span></div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="#booking-section" class="btn btn-primary">📡 RESERVE YOUR SEAT</a>
-        </div>
-    </div>
-
-    <div class="section" id="booking-section">
-        <h2>REQUEST INFORMATION</h2>
-        <form id="bookingForm">
-            <div class="form-group"><input type="text" id="fullname" placeholder="Full Name / Company" required></div>
-            <div class="form-group"><input type="email" id="email" placeholder="Email Address" required></div>
-            <div class="form-group"><input type="tel" id="phone" placeholder="Phone (with country code)"></div>
-            <div class="form-group">
-                <select id="interest">
-                    <option value="Residential">Residential Package</option>
-                    <option value="Premium">Premium Package</option>
-                    <option value="VIP">VIP / Corporate Module</option>
-                    <option value="Research">Research Partnership</option>
-                </select>
+    <!-- Премиум навигация -->
+    <nav class="premium-nav">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="photo_5863953355456056813_y.jpg" alt="Blue Origin">
+                <div class="logo-text">ORBITAL REEF</div>
             </div>
-            <div class="form-group"><textarea rows="3" id="message" placeholder="Additional questions or requests"></textarea></div>
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">📨 SEND INQUIRY</button>
-            <div id="formSuccess" class="success-message">✔️ Request received. A Blue Origin representative will contact you within 24 hours.</div>
-        </form>
-    </div>
-</div>
+            <div class="nav-links">
+                <a href="#mission">MISSION</a>
+                <a href="#modules">MODULES</a>
+                <a href="#packages">PACKAGES</a>
+                <a href="#booking-section">RESERVE</a>
+            </div>
+            <a href="#booking-section" class="nav-cta">BOOK NOW →</a>
+        </div>
+    </nav>
 
-<footer>
-    <div class="footer-links">
-        <a href="#">Blue Origin</a>
-        <a href="#">Orbital Reef Specs</a>
-        <a href="#">Sierra Space</a>
-        <a href="#">Media Kit</a>
-    </div>
-    <p>📧 <a href="mailto:reef@blueorigin.space" style="color:#99c1ff;">reef@blueorigin.space</a> | 🚀 <strong>Blue Origin • Orbital Reef</strong> | © 2026</p>
-    <p style="margin-top: 0.8rem;">"A home among the stars, engineered by the future"</p>
-</footer>
+    <!-- Основной контент (полностью сохранён из вашего исходного кода) -->
+    <div class="container">
+        <div class="hero">
+            <div class="hero-image">
+                <img src="photo_5863953355456056813_y.jpg" alt="Blue Origin - Orbital Reef">
+            </div>
+            <div class="tagline-hero">✦ FIRST COMMERCIAL SPACE STATION ✦</div>
+            <p style="margin-top: 1.2rem; font-size: 1.1rem; color:#b8d0ff;">
+            Designed by Blue Origin & Sierra Space. A home for life, work, and research in Low Earth Orbit.
+            </p>
+        </div>
 
-<!-- MODAL with Prometheus AI -->
-<div id="prometheusModal" class="modal-full">
-    <div class="modal-header-bar">
-        <h2>⚡ PROMETHEUS AI · WELLAMATORES LAB</h2>
-        <button class="close-modal-btn" id="closePrometheusBtn">✕</button>
+        <div class="section" id="mission">
+            <h2>MISSION</h2>
+            <p>Orbital Reef is a private orbital station enabling a new era of space living. Modular architecture, artificial gravity in residential zones, docking for Dream Chaser and New Glenn. Built for reliability, comfort, and long-term occupancy.</p>
+        </div>
+
+        <div class="section" id="modules">
+            <h2>KEY MODULES</h2>
+            <div class="grid-2col">
+                <div class="card"><h3>🛋️ Residential Core</h3><p>Panoramic Earth-view apartments, individual climate control, soundproofing, and zero-G lounges.</p></div>
+                <div class="card"><h3>🌱 Bio-Dome</h3><p>Hydroponic farms, closed-loop oxygen, fresh herbs & vegetables. A natural oasis in orbit.</p></div>
+                <div class="card"><h3>🔬 Science Hub</h3><p>Microgravity labs, research racks, and partnerships with NASA & top universities.</p></div>
+                <div class="card"><h3>🎬 Panoramic Cupola</h3><p>Observatory and event venue. Host dinners with Earthrise as your backdrop.</p></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>WHY ORBITAL REEF</h2>
+            <div class="grid-3col">
+                <div class="card"><h3>🔹 Safety First</h3><p>Active shielding, radiation protection, and regular crew rotation flights.</p></div>
+                <div class="card"><h3>🔹 New Economy</h3><p>Lease modules for startups, in-space manufacturing, and orbital tourism.</p></div>
+                <div class="card"><h3>🔹 Seamless Transport</h3><p>Docking for Crew Dragon, Starliner, Dream Chaser. Regular Blue Origin servicing.</p></div>
+            </div>
+        </div>
+
+        <div class="section" id="packages">
+            <h2>INVESTMENT PACKAGES</h2>
+            <div class="grid-3col">
+                <div class="card"><h3>RESIDENT</h3><div class="price">$9.5M</div><p>45m² apartment • 45 days/year access • science lectures</p><hr><span style="color:#9acdff;">▸ personal experiment locker</span></div>
+                <div class="card"><h3>PREMIUM</h3><div class="price">$22M</div><p>110m² Earth-view suite • 3 months stay + guest slots</p><hr><span style="color:#9acdff;">▸ priority docking</span></div>
+                <div class="card"><h3>CORPORATE/VIP</h3><div class="price">$48M+</div><p>250m² exclusive module • full service • unlimited duration</p><hr><span style="color:#9acdff;">▸ mission control access</span></div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#booking-section" class="btn btn-primary">📡 RESERVE YOUR SEAT</a>
+            </div>
+        </div>
+
+        <div class="section" id="booking-section">
+            <h2>REQUEST INFORMATION</h2>
+            <form id="bookingForm">
+                <div class="form-group"><input type="text" id="fullname" placeholder="Full Name / Company" required></div>
+                <div class="form-group"><input type="email" id="email" placeholder="Email Address" required></div>
+                <div class="form-group"><input type="tel" id="phone" placeholder="Phone (with country code)"></div>
+                <div class="form-group">
+                    <select id="interest">
+                        <option value="Residential">Residential Package</option>
+                        <option value="Premium">Premium Package</option>
+                        <option value="VIP">VIP / Corporate Module</option>
+                        <option value="Research">Research Partnership</option>
+                    </select>
+                </div>
+                <div class="form-group"><textarea rows="3" id="message" placeholder="Additional questions or requests"></textarea></div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">📨 SEND INQUIRY</button>
+                <div id="formSuccess" class="success-message">✔️ Request received. A Blue Origin representative will contact you within 24 hours.</div>
+            </form>
+        </div>
     </div>
-    <iframe class="modal-iframe" id="prometheusIframe" srcdoc='
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Blue Origin</a>
+            <a href="#">Orbital Reef Specs</a>
+            <a href="#">Sierra Space</a>
+            <a href="#">Media Kit</a>
+        </div>
+        <p>📧 <a href="mailto:reef@blueorigin.space" style="color:#99c1ff;">reef@blueorigin.space</a> | 🚀 <strong>Blue Origin • Orbital Reef</strong> | © 2026</p>
+        <p style="margin-top: 0.8rem;">"A home among the stars, engineered by the future"</p>
+    </footer>
+
+    <!-- Кнопка Prometheus AI -->
+    <button class="prometheus-fab" id="openPrometheusBtn">
+        ⚡ PROMETHEUS AI
+    </button>
+
+    <!-- Модальное окно Prometheus с полным 3D-контентом -->
+    <div id="prometheusModal" class="modal-full">
+        <div class="modal-header-bar">
+            <h2>⚡ PROMETHEUS AI · WELLAMATORES LAB</h2>
+            <button class="close-modal-btn" id="closePrometheusBtn">✕</button>
+        </div>
+        <iframe class="modal-iframe" id="prometheusIframe" srcdoc='
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -590,43 +729,63 @@
 </script>
 </body>
 </html>
-    '></iframe>
-</div>
+        '></iframe>
+    </div>
 
-<script>
-    const openBtn = document.getElementById('openPrometheusBtn');
-    const modal = document.getElementById('prometheusModal');
-    const closeBtn = document.getElementById('closePrometheusBtn');
-
-    openBtn.addEventListener('click', () => modal.classList.add('active'));
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) modal.classList.remove('active'); });
-
-    const form = document.getElementById('bookingForm');
-    const successDiv = document.getElementById('formSuccess');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const nameInput = document.getElementById('fullname');
-        const emailInput = document.getElementById('email');
-        if (nameInput.value.trim() !== '' && emailInput.value.trim() !== '') {
-            successDiv.style.display = 'block';
-            form.reset();
-            setTimeout(() => successDiv.style.display = 'none', 4500);
-        } else alert("Please enter your name and email.");
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === "#" || targetId === "") return;
-            const targetElem = document.querySelector(targetId);
-            if (targetElem) {
-                e.preventDefault();
-                targetElem.scrollIntoView({ behavior: 'smooth' });
+    <script>
+        // Создание звёзд
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = Math.random() * 2 + 1 + 's';
+                starsContainer.appendChild(star);
             }
+        }
+        createStars();
+
+        // Модальное окно Prometheus
+        const openBtn = document.getElementById('openPrometheusBtn');
+        const modal = document.getElementById('prometheusModal');
+        const closeBtn = document.getElementById('closePrometheusBtn');
+
+        openBtn.addEventListener('click', () => modal.classList.add('active'));
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) modal.classList.remove('active'); });
+
+        // Форма бронирования
+        const form = document.getElementById('bookingForm');
+        const successDiv = document.getElementById('formSuccess');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('fullname');
+            const emailInput = document.getElementById('email');
+            if (nameInput.value.trim() !== '' && emailInput.value.trim() !== '') {
+                successDiv.style.display = 'block';
+                form.reset();
+                setTimeout(() => successDiv.style.display = 'none', 4500);
+            } else alert("Please enter your name and email.");
         });
-    });
-</script>
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    targetElem.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
